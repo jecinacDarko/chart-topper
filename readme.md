@@ -2,7 +2,7 @@
 
 **Description:**
 
-Chart Topper is a user-friendly web application that allows you to discover the top songs from any date. Simply input a date, select a year if desired, and click "Get Chart Topper" to instantly access the number-one song for that day. Explore the song's title, artist, and artwork effortlessly.
+Chart Topper is a mobile first user-friendly web application that allows you to discover the top songs from any date. Simply input a date, select a year if desired, and click "Get Chart Topper" to instantly access the number-one song for that day. Explore the song's title, artist, and artwork effortlessly.
 
 **How to Start:**
 
