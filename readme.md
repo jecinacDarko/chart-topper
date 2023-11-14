@@ -12,6 +12,6 @@ Chart Topper is a user-friendly web application that allows you to discover the 
 
 3. **Launch**: Start the development server with `npm start`.
 
-4. **Access**: Open your web browser and visit `http://localhost:3000` to use the application.
+4. **Access**: Open your web browser and visit `http://localhost:5173` to use the application.
 
 Enjoy exploring the musical hits of the past with Chart Topper!
