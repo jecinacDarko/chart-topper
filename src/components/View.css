@@ -43,6 +43,22 @@ input {
   outline: none;
 }
 
+input[type="date"]{
+  padding: 15px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+::-webkit-calendar-picker-indicator{
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+::-webkit-ca
+
 input:focus {
   outline: none;
   border: 2px solid palevioletred;
@@ -67,9 +83,11 @@ input.success {
   flex-direction: column;
   gap: 10px;
   position: absolute;
-  width: 90%;
+  width: 100%;
   height: 120px;
-  bottom: 2em;
+  bottom: 0.6em;
+  left: 0;
+  padding: 1.2em;
 }
 
 button {
@@ -94,11 +112,12 @@ button {
   justify-content: center;
   align-items: center;
   width: 100%;
+  height:100%;
 }
 
-.song-item {
+.song-card {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
   border-radius: 4px;
@@ -107,8 +126,7 @@ button {
 
 img {
   width: 100%;
-  height: 60%;
-  margin-bottom: 15px;
+  height: 50%;
   opacity: 100%;
   overflow: hidden;
   background-size: contain;
@@ -140,6 +158,10 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.error {
+ margin: 25vh 0;
 }
 
 @media (min-width: 768px) {

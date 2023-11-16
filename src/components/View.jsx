@@ -23,13 +23,18 @@ const View = () => {
       if (success) {
         const songsArray = Array.isArray(chart) ? chart : Object.values(chart)[11];
         const topSong = songsArray.find((song) => song.avli === '1');
-        setChartData(topSong ? [topSong] : []);
-        setError('');
+        if (topSong) {
+          setChartData([topSong]);
+          setError('');
+        } else {
+          setChartData([]);
+          setError('There is no data for this date!');
+        }
         setShowResult(true);
       } else {
         setChartData([]);
         setError(error);
-      }  
+      }
     } catch (error) {
       console.error('Error:', error);
       setChartData([]);
@@ -39,6 +44,7 @@ const View = () => {
 
   const handleBack = () => {
     setShowResult(false);
+    setError('');
   };
 
   const shareSongWithFriends = () => {}; // Not implemented
@@ -46,24 +52,23 @@ const View = () => {
   return (
     <div className="container">
       {!showResult && (
-        <>
-          <h1>TOP SONG OF THAT DAY</h1>
+        <div>
+          <h1>FIND CHART TOPPER TRACK OF THE DAY!</h1>
           <label htmlFor="dateInput">CHOOSE DATE:</label>
           <input
             type="date"
-            id="dateInput"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
           <div className='button-container'>
             <button onClick={getTopSongs}>Search</button>
           </div>
-        </>
+        </div>
       )}
-      {showResult && (
+      {showResult && chartData.length > 0 && (
         <div className="chart-container">
           {chartData.map((song, index) => (
-            <div key={index} className="song-item">
+            <div key={index} className="song-card">
               <img
                 src={`${baseImgUrl}${song.kva}`}
                 alt={`${formatText(song.tit)}${formatText(song.arso)}`}
@@ -73,7 +78,7 @@ const View = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   textAlign: 'left',
-                  paddingLeft: '1.2em',
+                  padding: '0.8em',
                   gap: '5px',
                   marginBottom: '2em',
                 }}
@@ -96,15 +101,25 @@ const View = () => {
                   {formatText(song.arso)}
                 </p>
               </div>
+              <div className='button-container'>
+                <button onClick={handleBack}>Go Back</button>
+                <button onClick={shareSongWithFriends}>Share with friends</button>
+              </div>
             </div>
           ))}
+        </div>
+      )}
+      {showResult && chartData.length === 0 && (
+        <div className="error">
+          <p style={{ color: 'white', textAlign: 'center', fontSize: '20px' }}>
+            {error}
+          </p>
           <div className='button-container'>
             <button onClick={handleBack}>Go Back</button>
-            <button onClick={shareSongWithFriends}>Share with friends</button>
           </div>
         </div>
       )}
-      {error && <p>{error}</p>}
+      {error && !showResult && <p>{error}</p>}
     </div>
   );
 };
